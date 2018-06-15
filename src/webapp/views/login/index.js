@@ -1,7 +1,9 @@
 import Vue from 'vue';
 import Login from './index.vue';
 
-new Vue({
-    el: '#app',
-    render: h => h(Login)
+const vm = new Vue({
+  el: '#app',
+  render: h => h(Login)
 });
+
+Vue.use({ vm });
