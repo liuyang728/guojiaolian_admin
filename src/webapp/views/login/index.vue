@@ -1,6 +1,9 @@
 <template>
   <div class="l-container">
     <header class="header">header</header>
+    <main class="main">
+      <p>666</p>
+    </main>
     <footer class="footer">footer</footer>
   </div>
 </template>
@@ -14,30 +17,10 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-// @import url('./index.css');
-.l-container {
-  color: red;
-  background: goldenrod;
-  height: 500px;
-}
-</style>
-<style lang="postcss">
+<style>
 @import url('./index.css');
-:root {
-  --blue: blue;
+.main {
+  height: 200px;
+  background: #a06;
 }
-.l-container {
-  color: var(--blue);
-  .header {
-    height: 100px;
-    background: var(--blue);
-  }
-}
-
 </style>
-
-
-
-

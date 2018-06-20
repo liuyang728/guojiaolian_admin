@@ -1,6 +1,16 @@
+:root {
+  --blue: blue;
+}
+.l-container {
+  color: var(--blue);
+}
+
 .header {
   color: #f00;
 }
 .footer {
   color: aqua;
+}
+.main {
+  color: #a0a;
 }

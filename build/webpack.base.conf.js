@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
@@ -8,7 +9,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, '..', 'dist/assets'),
-    filename: 'js/[name].js'
+    filename: 'js/[name].[hash].js'
   },
   module: {
     rules: [
@@ -22,17 +23,17 @@ module.exports = {
         use: 'vue-loader'
       },
       {
-        test: /\.scss$/,
-        use: ['vue-style-loader', 'css-loader', 'sass-loader']
-      },
-      {
         test: /\.css$|\.postcss$/,
-        use: ['vue-style-loader', 'css-loader', 'postcss-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
       }
     ]
   },
   plugins: [
     new VueLoaderPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[hash].css'
+      // chunkFilename: 'css/[id].css'
+    }),
     new HtmlWebpackPlugin({
       title: '哈哈哈哈',
       filename: 'login.html',
