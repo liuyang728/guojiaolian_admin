@@ -7,16 +7,16 @@
     "license": "MIT",
     "scripts": {
         "lint": "eslint ./src --fix",
-        "start": "pm2 start dist/app.js --watch",
-        "build:web": "webpack --config build/webpack.prod.conf.js",
-        "build": "cross-env NODE_ENV=production gulp && webpack --config build/webpack.prod.conf.js",
-        "dev": "cross-env NODE_ENV=development gulp && webpack --config build/webpack.dev.conf.js --watch"
+        "server": "pm2 start dist/app.js --watch",
+        "start": "webpack-dev-server --config build/webpack.dev.conf.js",
+        "build": "cross-env NODE_ENV=production gulp && webpack --progress --config build/webpack.prod.conf.js",
+        "dev": "cross-env NODE_ENV=development gulp && webpack --config build/webpack.dev.conf.js"
     },
     "dependencies": {
+        "element-ui": "^2.4.3",
         "koa": "^2.5.1",
         "koa-router": "^7.4.0",
         "koa-static": "^4.0.3",
-        "typescript": "^2.9.2",
         "vue": "^2.5.16"
     },
     "devDependencies": {

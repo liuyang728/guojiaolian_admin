@@ -9,7 +9,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, '..', 'dist/assets'),
-    filename: 'js/[name].[hash].js'
+    filename: 'js/[name].js'
   },
   module: {
     rules: [
@@ -31,7 +31,7 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'css/[name].[hash].css'
+      filename: 'css/[name].css'
       // chunkFilename: 'css/[id].css'
     }),
     new HtmlWebpackPlugin({
