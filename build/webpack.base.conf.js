@@ -4,12 +4,12 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+  context: path.resolve(__dirname, '..', 'src/webapp'),
   entry: {
-    login: path.resolve(__dirname, '..', 'src/webapp/views/login/index.js')
+    login: './views/login/index.js'
   },
   output: {
-    path: path.resolve(__dirname, '..', 'dist/assets'),
-    filename: 'js/[name].js'
+    path: path.resolve(__dirname, '..', 'dist/assets')
   },
   module: {
     rules: [
@@ -25,19 +25,35 @@ module.exports = {
       {
         test: /\.css$|\.postcss$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
+      },
+      {
+        test: /\.(png|jpg|gif|ttf|woff)$/,
+        use: 'file-loader'
       }
     ]
   },
   plugins: [
     new VueLoaderPlugin(),
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].css'
-      // chunkFilename: 'css/[id].css'
-    }),
     new HtmlWebpackPlugin({
       title: '哈哈哈哈',
       filename: 'login.html',
-      template: path.resolve(__dirname, '..', 'src/webapp/views/login/index.html')
+      template: './template.html',
+      favicon: './favicon.ico'
     })
-  ]
+  ],
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  },
+  externals: {
+    vue: 'Vue',
+    'element-ui': 'element-ui'
+  },
+  resolve: {
+    alias: {
+      Components: path.resolve(__dirname, '..', 'src/webapp/components'),
+      Utils: path.resolve(__dirname, '..', 'src/webapp/utils')
+    }
+  }
 };

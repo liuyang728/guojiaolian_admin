@@ -1,26 +1,22 @@
 <template>
-  <div class="l-container">
-    <header class="header">header</header>
-    <main class="main">
-      <p>666</p>
-    </main>
-    <footer class="footer">footer</footer>
-  </div>
+  <el-container>
+    <app-header></app-header>
+    <el-main></el-main>
+  </el-container>
 </template>
 
 <script>
+import AppHeader from 'Components/common/AppHeader.vue';
+
 export default {
+  components: {
+    'app-header': AppHeader
+  },
   data() {
-    return {
-      a: 1
-    };
+    return {};
   }
 };
 </script>
 <style>
-@import url('./index.css');
-.main {
-  height: 200px;
-  background: #a06;
-}
+@import url('./index');
 </style>
